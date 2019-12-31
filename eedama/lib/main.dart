@@ -13,33 +13,7 @@ Future main() async {
   runApp(new MyApp());
 }
 
-/*
-  runApp(MultiProvider(
-    providers: [
-      ChangeNotifierProvider(builder: (_) => Keys()),
-    ],
-    child: MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        // adding a theme
 
-        brightness: Brightness.dark, //changing the theme to dark
-        primaryColor: Colors.deepPurple,
-        accentColor: Colors.deepPurple[300],
-
-        fontFamily: 'NotoSansArabic',
-        tabBarTheme: TabBarTheme(),
-        iconTheme: IconThemeData(),
-      ),
-
-      home: HawalnirHome(),
-      initialRoute: '/',
-      routes: <String, WidgetBuilder>{
-
-      },
-    ),
-  ));
-*/
 
 Drawer myDrawer({@required BuildContext context}) {
   return Drawer(
@@ -89,12 +63,17 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        initialRoute: '/',
-        routes: {
-          '/': (context) => InAppWebViewExampleScreen(),
-          '/posts': (context) => HawalnirHome(),
-        }
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => Keys()),
+      ],
+      child: MaterialApp(
+          initialRoute: '/',
+          routes: {
+            '/': (context) => InAppWebViewExampleScreen(),
+            '/posts': (context) => HawalnirHome(),
+          }
+      ),
     );
   }
 }
