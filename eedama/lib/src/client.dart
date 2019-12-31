@@ -46,8 +46,8 @@ class WordpressClient {
 
     List<Category> categories = new List();
     categories = categoryMaps
-        .map((categoryMap) => new Category.fromMap(categoryMap))
-        .toList();
+        ?.map((categoryMap) => new Category.fromMap(categoryMap))
+        ?.toList();
 
     return categories;
   }
